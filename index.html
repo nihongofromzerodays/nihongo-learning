@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihongo From Zero Days - Learn Japanese Without Fear</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ffb7c5 0%, #ff9eb5 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 110, 142, 0.2);
+            margin-bottom: 40px;
+            border-radius: 0 0 30px 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        nav button {
+            background: linear-gradient(135deg, #ffb7c5 0%, #ff9eb5 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(255, 110, 142, 0.2);
+        }
+
+        nav button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 110, 142, 0.4);
+        }
+
+        .page {
+            display: none;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2 {
+            color: #ff6e8e;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #ffb7c5;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #ff85a2;
+            font-size: 1.6em;
+            margin: 30px 0 15px 0;
+        }
+
+        h4 {
+            color: #ff9eb5;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #ffe8ec 0%, #ffd4db 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero h2 {
+            border: none;
+            font-size: 2.8em;
+            color: #ff6e8e;
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #ff6e8e 0%, #ff5578 100%);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 110, 142, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(255, 110, 142, 0.5);
+        }
+
+        .section {
+            background: #fafafa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #ffb7c5;
+        }
+
+        .lesson-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #ffb7c5;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .lesson-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 6px 20px rgba(255, 110, 142, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        table th {
+            background: linear-gradient(135deg, #ffb7c5 0%, #ff9eb5 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        table td {
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .hiragana-large {
+            font-size: 3em;
+            color: #ff6e8e;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            .hero h2 {
+                font-size: 2em;
+            }
+            .page {
+                padding: 25px;
+            }
+            nav {
+                flex-direction: column;
+            }
+            nav button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌸 Nihongo From Zero Days</h1>
+        <p>Learn Japanese Without Fear</p>
+    </header>
+
+    <div class="container">
+        <nav>
+            <button onclick="showPage('home')">Home</button>
+            <button onclick="showPage('lessons')">Lesson Index</button>
+            <button onclick="showPage('day1')">Day 1</button>
+            <button onclick="showPage('philosophy')">Our Method</button>
+            <button onclick="showPage('about')">About</button>
+        </nav>
+
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="hero">
+                <h2>Learn Japanese Without Fear</h2>
+                <p>A gentle, step-by-step guide for absolute beginners</p>
+            </div>
+
+            <div class="section">
+                <h3>Welcome to Nihongo From Zero Days</h3>
+                <p>If you've ever wanted to learn Japanese but felt scared of the writing system, confused by complicated explanations, or unsure where to start—this site is for you.</p>
+                
+                <p>We believe anyone can learn Japanese. You don't need to be "good at languages." You don't need expensive courses. You just need to start small, go slow, and trust the process.</p>
+            </div>
+
+            <h3>Who This Site Is For</h3>
+            <ul>
+                <li><strong>Absolute beginners</strong> who have never studied Japanese before</li>
+                <li><strong>Bangladeshi and South Asian learners</strong> who want explanations that make sense</li>
+                <li><strong>People afraid of Japanese scripts</strong> like Hiragana, Katakana, and Kanji</li>
+                <li><strong>Self-learners</strong> who don't have a teacher</li>
+                <li><strong>Future JLPT N5 test-takers</strong></li>
+            </ul>
+
+            <div class="section">
+                <h3>How Learning Works Here</h3>
+                <h4>Day 1: You start with just five sounds</h4>
+                <p>We don't throw 46 Hiragana characters at you. We start with あ (a), い (i), う (u), え (e), お (o).</p>
+                
+                <h4>Day 2–Day 5: You build slowly</h4>
+                <p>Each day adds a few more characters. By Day 5, you know all the basic Hiragana vowels and consonants.</p>
+                
+                <h4>Day 6–Day 10: You start using what you learned</h4>
+                <p>Simple words. Simple greetings. Simple sentences. Everything you learn is useful from Day 1.</p>
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <button class="cta-button" onclick="showPage('day1')">Begin Day 1 →</button>
+            </div>
+        </div>
+
+        <!-- LESSON INDEX -->
+        <div id="lessons" class="page">
+            <h2>Your 10-Day Learning Journey</h2>
+            <p>Click on any day to open that lesson. Complete one lesson per day, or go at your own pace.</p>
+
+            <div class="lesson-card" onclick="showPage('day1')">
+                <h4>Day 1: Hiragana Basics – The Five Vowels (あ い う え お)</h4>
+                <p>Learn the foundation of Japanese pronunciation</p>
+                <p style="color:#999;">Duration: 15 minutes</p>
+            </div>
+
+            <div class="lesson-card">
+                <h4>Day 2: Hiragana – K-Sounds (か き く け こ)</h4>
+                <p>Build on your vowels with consonant combinations</p>
+                <p style="color:#999;">Coming Soon</p>
+            </div>
+
+            <div class="lesson-card">
+                <h4>Day 3-10: More Lessons Coming Soon</h4>
+                <p>S-sounds, T-sounds, words, greetings, and more!</p>
+            </div>
+        </div>
+
+        <!-- DAY 1 LESSON -->
+        <div id="day1" class="page">
+            <h2>Day 1: Hiragana Basics – The Five Vowels</h2>
+
+            <div class="section">
+                <h3>Welcome to Day 1</h3>
+                <p>Congratulations on starting your Japanese learning journey. Today is special because it's the day you stop thinking "I can't" and start proving "I can."</p>
+                
+                <p>We're going to learn five characters. Just five. That's all.</p>
+            </div>
+
+            <h3>What is Hiragana?</h3>
+            <p>Hiragana is one of the three writing systems used in Japanese. Think of Hiragana as the "basic alphabet" of Japanese.</p>
+            
+            <p>Every Japanese person learns Hiragana first, usually around age 5 or 6. Hiragana has 46 basic characters. But today, we're only learning <strong>5</strong>.</p>
+
+            <h3>Today's Characters: The Five Vowels</h3>
+            <table>
+                <tr>
+                    <th>Hiragana</th>
+                    <th>Sound</th>
+                    <th>How to Say It</th>
+                </tr>
+                <tr>
+                    <td class="hiragana-large">あ</td>
+                    <td><strong>a</strong></td>
+                    <td>Like "ah" in "father" (ফাদার-এ যেমন আ)</td>
+                </tr>
+                <tr>
+                    <td class="hiragana-large">い</td>
+                    <td><strong>i</strong></td>
+                    <td>Like "ee" in "see" (সি-তে যেমন ঈ)</td>
+                </tr>
+                <tr>
+                    <td class="hiragana-large">う</td>
+                    <td><strong>u</strong></td>
+                    <td>Like "oo" in "food" (ফুড-এ যেমন উ)</td>
+                </tr>
+                <tr>
+                    <td class="hiragana-large">え</td>
+                    <td><strong>e</strong></td>
+                    <td>Like "eh" in "bed" (বেড-এ যেমন এ)</td>
+                </tr>
+                <tr>
+                    <td class="hiragana-large">お</td>
+                    <td><strong>o</strong></td>
+                    <td>Like "oh" in "boat" (বোট-এ যেমন ও)</td>
+                </tr>
+            </table>
+
+            <div class="section">
+                <h3>How to Practice</h3>
+                <p><strong>Step 1:</strong> Say each sound out loud 5 times</p>
+                <p><strong>Step 2:</strong> Look at each character and say its sound</p>
+                <p><strong>Step 3:</strong> Close your eyes and try to "see" the characters in your mind</p>
+                <p><strong>Step 4:</strong> Write each character 5 times on paper</p>
+            </div>
+
+            <div class="section" style="background:#fff3e0; border-left:5px solid #ffb74d;">
+                <h3>Why This Feels Slow (And Why That's Good)</h3>
+                <p>You might be thinking: "Only five characters? I could learn way more than this!"</p>
+                <p>We're learning <strong>slowly and deeply.</strong> By the end of today, these five characters will be locked into your memory.</p>
+                <p><strong>Trust the process. Slow is fast.</strong></p>
+            </div>
+
+            <h3>What You Learned Today</h3>
+            <ul>
+                <li>What Hiragana is and why it's important</li>
+                <li>The five vowel sounds in Japanese: あ い う え お</li>
+                <li>How to pronounce each sound correctly</li>
+                <li>How to recognize each character by sight</li>
+            </ul>
+
+            <p style="margin-top:30px; font-size:1.2em; color:#ff6e8e;"><strong>See you tomorrow for Day 2!</strong></p>
+        </div>
+
+        <!-- PHILOSOPHY PAGE -->
+        <div id="philosophy" class="page">
+            <h2>Why This Site Is Different</h2>
+
+            <h3>Our Approach: Slow, Deep, and Human</h3>
+            <p><strong>1. We go slow on purpose.</strong> You learn 5 characters, then 5 more, then 5 more. Your foundation is rock-solid.</p>
+            
+            <p><strong>2. We explain WHY, not just WHAT.</strong> We explain why Hiragana exists, how Japanese sounds work, and what makes Japanese different from English.</p>
+            
+            <p><strong>3. We talk to you like a human being.</strong> No robotic explanations. We know you're nervous. We speak to you like a patient friend.</p>
+            
+            <p><strong>4. We prioritize reading over memorization.</strong> From Day 1, you're reading real Japanese characters. By Day 6, you're reading real words.</p>
+            
+            <p><strong>5. We remove pressure.</strong> No quizzes you can "fail." No leaderboards. Just lessons at your own pace.</p>
+
+            <h3>Our Promise</h3>
+            <p>If you follow this 10-day journey, you'll be able to:</p>
+            <ul>
+                <li>Read all basic Hiragana characters</li>
+                <li>Read simple Japanese words</li>
+                <li>Say common greetings and phrases</li>
+                <li>Write your first full sentence in Japanese</li>
+                <li>Feel confident that you CAN learn Japanese</li>
+            </ul>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+            <h2>About Nihongo From Zero Days</h2>
+            <p>This site was created for absolute beginners who feel intimidated by Japanese but want to learn.</p>
+            
+            <h3>Our Mission</h3>
+            <p>To provide a calm, clear, beginner-friendly path into Japanese language learning—especially for South Asian learners who don't have access to teachers or expensive courses.</p>
+            
+            <h3>Why "Zero Days"?</h3>
+            <p>Because you're starting from zero. Day zero. No prior knowledge needed. We build everything from the ground up, one day at a time.</p>
+            
+            <div style="text-align:center; margin:40px 0;">
+                <button class="cta-button" onclick="showPage('home')">Back to Home</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            var pages = document.getElementsByClassName('page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
